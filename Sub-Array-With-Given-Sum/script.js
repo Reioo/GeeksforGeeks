@@ -15,19 +15,21 @@ function subarraySum(arr, n, s) {
     let result = [];
     let trySum = 0;
     for (let i = 0; i < n; i++) {
+        console.log('arr[i] ' + arr[i]);
         if (arr[i] == s) {
             return i + 1;
         } else if (arr[i] > s) {
             continue;
         } else {
             trySum += arr[i];
-
             if (i + 1 != n) {
                 for (let j = i + 1; j < n; j++) {
                     trySum += arr[j];
+                    console.log('trySum: ' + trySum);
                     if (trySum == s) {
                         result[0] = i + 1;
                         result[1] = j + 1;
+                        return result;
                     } else if (trySum > s) {
                         break;
                     } else {
@@ -38,8 +40,10 @@ function subarraySum(arr, n, s) {
             }
         }
     }
+    return -1;
 }
-
 const A = [1,2,3,7,5];
 const N = A.length;
 const S = 12;
+
+console.log(subarraySum(A, N, S));
