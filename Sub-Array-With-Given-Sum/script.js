@@ -15,11 +15,14 @@ function subarraySum(arr, n, s) {
     let result = [];
     let trySum = 0;
     for (let i = 0; i < n; i++) {
+        
         console.log('arr[i] ' + arr[i]);
         if (arr[i] == s) {
             return i + 1;
         } else if (arr[i] > s) {
             continue;
+        } else if (i + 1 == n && arr[i] != s) {
+            return -1;
         } else {
             trySum += arr[i];
             if (i + 1 != n) {
@@ -42,7 +45,7 @@ function subarraySum(arr, n, s) {
     }
     return -1;
 }
-const A = [1,2,3,7,5];
+const A = [134, 23, 65, 37, 55, 5];
 const N = A.length;
 const S = 12;
 
